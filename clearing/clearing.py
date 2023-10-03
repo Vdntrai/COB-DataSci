@@ -1,12 +1,9 @@
 import pandas as pd
 
-# Define the web link to your dataset
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTSS-TcErkXNk8KB0AlijhitwetxeHD2M3R0HJl2QPMAyFq0fxFX4PFKnzAWLDnratIz67DNL6GsZnV/pub?output=csv"
 
-# Load the dataset from the web
 data = pd.read_csv(url)
 
-# Check for missing values
 missing_values = data.isnull().sum()
 print(missing_values)
 
@@ -24,5 +21,4 @@ def remove_outliers_iqr(data, columns):
 columns_to_check = ["show_id", "type", "title", "director", "country", "date_added", "release_year", "rating", "duration", "listed_in"]
 data = remove_outliers_iqr(data, columns_to_check)
 
-# Save the cleaned dataset to a CSV file
 data.to_csv("cleaned_netflix.csv", index=False)
